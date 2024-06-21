@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>default</LangVersion>
+        <UserSecretsId>05f0da6b-108b-400e-81c0-9988d8dfe224</UserSecretsId>
+    </PropertyGroup>
+
+
+
+    <ItemGroup>
+      <None Remove="config.json" />
+      <Content Include="config.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+
+
+
+    <ItemGroup>
+      <PackageReference Include="Dapper" Version="2.1.35" />
+      <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+      <PackageReference Include="DSharpPlus" Version="5.0.0-nightly-02201" />
+      <PackageReference Include="DSharpPlus.SlashCommands" Version="5.0.0-nightly-02201" />
+      <PackageReference Include="Magick.NET-Q16-x64" Version="13.6.0" />
+      <PackageReference Include="Magick.NET.SystemDrawing" Version="7.2.2" />
+      <PackageReference Include="NinjaGaming.NinjaBot.CommonPluginHelpers" Version="1.0.0-Pre" />
+      <PackageReference Include="NinjaGaming.NinjaBot.PluginBase" Version="1.0.0-pre" />
+    </ItemGroup>
+
+
+
+
+    <ItemGroup>
+      <Reference Include="NinjaBot-DC">
+        <HintPath>..\..\NinjaBot-DC\NinjaBot-DC\bin\Debug\net8.0\NinjaBot-DC.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+
+
+
+
+
+
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+      <Exec Command="copy &quot;$(TargetDir)$(AssemblyName)$(TargetExt)&quot; &quot;$(ProjectDir)..\NinjaBot-DC\plugins&quot;&#xA;mkdir &quot;$(ProjectDir)..\NinjaBot-DC\plugins\$(ProjectName)&quot;&#xA;copy &quot;$(ProjectDir)\config.json&quot; &quot;$(ProjectDir)..\NinjaBot-DC\plugins\$(ProjectName)\&quot;&#xA;copy &quot;$(ProjectDir)\plugin.xml&quot; &quot;$(ProjectDir)..\NinjaBot-DC\plugins\$(ProjectName)\&quot;" />
+    </Target>
+
+</Project>

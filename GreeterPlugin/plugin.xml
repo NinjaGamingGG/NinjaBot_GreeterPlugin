@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PluginInfo>
+  <PluginName>GreeterPlugin</PluginName>
+  <EnvironmentVariablePrefix>greeter-plugin</EnvironmentVariablePrefix>
+  <Description>Greets new users with an welcome image</Description>
+  <PluginVersion>0.1</PluginVersion>
+</PluginInfo>
